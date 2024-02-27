@@ -9,6 +9,8 @@ import DeleteCourseController from "./DeleteCourse/DeleteCourseController"
 import DeleteCourseService from "./DeleteCourse/DeleteCourseService"
 import ListCoursesController from "./ListCourse/ListCourseController"
 import ListCoursesService from "./ListCourse/ListCourseService"
+import GetTokenService from "./GetToken/GetTokenService"
+import GetTokenController from "./GetToken/GetTokenController"
 
 const repository = new Mysql()
 
@@ -27,10 +29,14 @@ const deleteCourseController = new DeleteCourseController(deleteCourseService)
 const listCoursesService = new ListCoursesService(repository)
 const listCoursesController = new ListCoursesController(listCoursesService)
 
+const getTokenService = new GetTokenService()
+const getTokenController = new GetTokenController(getTokenService)
+
 export {
     createCourseController,
     viewCourseController,
     editCourseController,
     deleteCourseController,
-    listCoursesController
+    listCoursesController,
+    getTokenController
 }

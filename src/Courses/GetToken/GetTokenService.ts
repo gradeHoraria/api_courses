@@ -5,7 +5,7 @@ export default class GetTokenService {
     
     async execute(user: User) {
         const keycloakAdminClient = new KeycloakAdminClient({
-            baseUrl: 'http://localhost:8080',
+            baseUrl: 'http://keycloak:8080',
             realmName: 'gradeHoraria',
         })
 

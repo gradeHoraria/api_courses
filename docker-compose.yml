@@ -5,7 +5,26 @@ services:
     build: .
     ports:
       - "3000:3000"
+    depends_on:
+      - keycloak
     volumes:
       - .:/usr/src/app
     working_dir: /usr/src/app
     command: npm start
+    networks:
+      - rede_courses
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:23.0.7
+    ports:
+      - "8080:8080"
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+    command: start-dev
+    networks:
+      - rede_courses
+
+networks:
+  rede_courses:
+    driver: bridge
